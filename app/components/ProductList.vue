@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-cols-4">
     <!-- SSR skeleton -->
-    <div v-if="loading" v-for="i in 8" :key="i" class="h-60 bg-gray-200 animate-pulse rounded"></div>
+    <div v-if="loading" v-for="i in 12" :key="i" class="h-60 bg-gray-200 animate-pulse rounded"></div>
 
     <!-- Product list -->
     <template v-else>
