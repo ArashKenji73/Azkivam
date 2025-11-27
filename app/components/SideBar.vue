@@ -2,7 +2,7 @@
     <div class="sidebar flex flex-col md:w-1/4 shrink-0 bg-white p-4 border rounded-2xl">
         <h1 class="mb-8 text-xl">فیلترها</h1>
         <category-list :items="categories.data"/>
-        <hr>
+        <hr class="h-0.5 bg-gray-300 border-0">
         <merchant-filter />
     </div>
 

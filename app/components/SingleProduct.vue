@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col border border-gray-300 bg-white px-4 py-8">
+  <div class="flex flex-col border border-gray-300  px-4 py-8">
     <NuxtImg 
       :src="data.imageUrl" 
       class="product-image mb-4"
