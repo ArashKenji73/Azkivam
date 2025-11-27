@@ -5,8 +5,7 @@
       class="product-image mb-4"
       width="400" 
       height="400" 
-      :placeholder="15"
-      @error="errorImage"
+      placeholder="/images/no-image.svg"
     />
 
     <div class="mt-auto">
@@ -22,7 +21,7 @@
 <script setup>
 const {data} = defineProps(['data'])
 const errorImage = (e) => {
-  e.target.src = '/images/default-product.png'
+  e.target.src = '/images/no-image.svg'
 }
 </script>
 
