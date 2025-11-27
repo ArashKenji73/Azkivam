@@ -53,11 +53,17 @@ function updateQuery() {
 }
 
 
-onMounted(() => {
-  if (route.query.merchants) {
-    selected.value = route.query.merchants.split(",").map(Number)
-  }
-})
+watch(
+  () => route.query.merchants,
+  (val) => {
+    if (!val) {
+      selected.value = []
+      return
+    }
+    selected.value = val.split(",").map(Number)
+  },
+  { immediate: true }   // 🔥 load from query on first render
+)
 </script>
 
 <style scoped>
