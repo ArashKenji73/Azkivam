@@ -50,21 +50,46 @@ export function useProducts() {
     }
   }
 
-  // Initial fetch
-  fetchProducts()
 
-  watch(
-    () => route.query.merchants,
-    (newVal, oldVal) => {
-      fetchProducts(true)
+    // ===== NEW: FETCH PRODUCT BY ID ======
+  const productsByCategory = ref([])
+
+  async function fetchProductByCategory(categoryID, reset = false) {
+    loading.value = true
+    error.value = null
+
+    if(reset === true){
+      page.value = 1
+      productsByCategory.value = []
     }
-  )
+
+    try {
+      const data = await $fetch(
+      `${config.public.baseURL}/products/${categoryID}?size=${size.value}&page=${page.value}`,
+        {
+          method: 'POST',
+          body: { merchants: merchantIds.value },
+        }
+      )
+      productsByCategory.value = [...productsByCategory.value, ...data.data];
+      totalItems.value = data.totalItems
+      page.value++
+    } catch (err) {
+      error.value = err
+      return null
+    } finally {
+      loading.value = false
+    }
+  }
+
   return {
     products,
     loading,
     error,
     page,
     totalItems,
+    productsByCategory,
     fetchProducts,
+    fetchProductByCategory,
   }
 }
