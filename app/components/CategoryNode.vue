@@ -57,8 +57,12 @@ const hasChildren = computed(() => {
   return props.getChildren(props.category.id).length > 0
 })
 </script>
-<style lang="css">
+<style lang="css" scoped>
 .node.py-4:last-child{
   padding-bottom: 0px;
+}
+
+.router-link-exact-active{
+  font-weight: bold;
 }
 </style>
